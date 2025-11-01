@@ -11,14 +11,14 @@ import { TotalSales } from "@/components/sections/total-sales";
 export default function Home() {
   return (
     <DashboardLayout>
-      <div className="p-4 sm:p-6 md:p-8">
-        <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 sm:mb-6">
+      <div className="p-4 sm:p-6 md:p-8 bg-white dark:bg-gray-900">
+        <h1 className="text-sm font-semibold text-[#1C1C1C] dark:text-gray-100 mb-4 sm:mb-6">
           eCommerce
         </h1>
 
         {/* Metrics Row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6">
             <MetricCard
               title="Customers"
               value="3,781"
@@ -28,18 +28,21 @@ export default function Home() {
             />
             <MetricCard
               title="Orders"
+              backgroundColor="bg-[#F7F9FB]"
               value="1,219"
               change="-0.03%"
               isPositive={false}
             />
             <MetricCard
               title="Revenue"
+              backgroundColor="bg-[#F7F9FB]"
               value="$695"
               change="+15.03%"
               isPositive={true}
             />
             <MetricCard
               title="Growth"
+              backgroundColor="bg-[#E5ECF6]"
               value="30.1%"
               change="+6.08%"
               isPositive={true}
