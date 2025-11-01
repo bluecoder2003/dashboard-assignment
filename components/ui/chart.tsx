@@ -48,7 +48,7 @@ const ChartContainer = React.forwardRef<
         data-chart={chartId}
         ref={ref}
         className={cn(
-          "flex aspect-video justify-center text-xs [&_.recharts-cartesian-axis-tick_text]:fill-gray-500 [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-gray-200 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-gray-200 [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-none [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-gray-200 [&_.recharts-radial-bar-background-sector]:fill-gray-100 [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-gray-100 [&_.recharts-reference-line_[stroke='#ccc']]:stroke-gray-200 [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-none [&_.recharts-surface]:outline-none",
+          "flex aspect-video justify-center text-xs [&_.recharts-cartesian-axis-tick_text]:fill-gray-500 dark:[&_.recharts-cartesian-axis-tick_text]:fill-[#7E7E7E] [&_.recharts-cartesian-grid_line]:stroke-gray-200 dark:[&_.recharts-cartesian-grid_line]:stroke-[#7E7E7E] [&_.recharts-curve.recharts-tooltip-cursor]:stroke-gray-200 dark:[&_.recharts-curve.recharts-tooltip-cursor]:stroke-[#333333] [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-none [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-gray-200 [&_.recharts-radial-bar-background-sector]:fill-gray-100 dark:[&_.recharts-radial-bar-background-sector]:fill-[#333333] [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-gray-100 dark:[&_.recharts-rectangle.recharts-tooltip-cursor]:fill-[#333333] [&_.recharts-reference-line_[stroke='#ccc']]:stroke-gray-200 [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-none [&_.recharts-surface]:outline-none",
           className
         )}
         {...props}
@@ -145,7 +145,7 @@ const ChartTooltipContent = React.forwardRef<
       <div
         ref={ref}
         className={cn(
-          "grid min-w-32 items-start gap-1.5 rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-xs shadow-xl dark:border-gray-800 dark:bg-gray-950",
+          "grid min-w-32 items-start gap-1.5 rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-xs shadow-xl dark:border-[#444444] dark:bg-[#272727]",
           className
         )}
       >
@@ -199,12 +199,12 @@ const ChartTooltipContent = React.forwardRef<
                       )}
                     >
                       <div className="grid gap-1.5">
-                        <span className="text-gray-500">
+                        <span className="text-gray-500 dark:text-gray-400">
                           {itemConfig?.label || item.name}
                         </span>
                       </div>
                       {item.value && (
-                        <span className="font-mono font-medium tabular-nums text-gray-950 dark:text-gray-50">
+                        <span className="font-mono font-medium tabular-nums text-gray-950 dark:text-white">
                           {item.value.toLocaleString()}
                         </span>
                       )}

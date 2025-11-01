@@ -27,11 +27,11 @@ export const RevenueByLocation = () => {
             {locations.map((location) => (
               <div key={location.name} className="space-y-1.5">
                 <div className="flex justify-between items-center">
-                  <span className="text-xs font-medium text-[#1C1C1C] dark:text-gray-400">{location.name}</span>
-                  <span className="text-xs font-semibold text-[#1C1C1C] dark:text-gray-100">{location.revenue}</span>
+                  <span className="text-xs font-medium text-[#1C1C1C] dark:text-white">{location.name}</span>
+                  <span className="text-xs font-semibold text-[#1C1C1C] dark:text-white">{location.revenue}</span>
                 </div>
                 {/* Progress bar */}
-                <div className="w-full h-0.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                <div className="w-full h-0.5 bg-gray-200 dark:bg-[#333333] rounded-full overflow-hidden">
                   <div
                     className="h-full bg-[#A8C5DA] dark:bg-[#60a5fa] rounded-full transition-all duration-300"
                     style={{ width: `${location.percentage}%` }}

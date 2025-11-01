@@ -11,7 +11,7 @@ import { TotalSales } from "@/components/sections/total-sales";
 export default function Home() {
   return (
     <DashboardLayout>
-      <div className="p-4 sm:p-6 md:p-8 bg-white dark:bg-gray-900">
+      <div className="p-4 sm:p-6 md:p-8 bg-white dark:bg-[#1C1C1C]">
         <h1 className="text-sm font-semibold text-[#1C1C1C] dark:text-gray-100 mb-4 sm:mb-6">
           eCommerce
         </h1>
@@ -21,28 +21,40 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6">
             <MetricCard
               title="Customers"
+              backgroundColor="bg-[#E3F5FF] dark:bg-[#E3F5FF]"
+              titleColor="text-[#1C1C1C] dark:text-[#1C1C1C]"
+              valueColor="text-[#1C1C1C] dark:text-[#1C1C1C]"
+              changeColor="text-[#1C1C1C] dark:text-[#1C1C1C]"
               value="3,781"
               change="+11.01%"
               isPositive={true}
-              isHighlighted={true}
             />
             <MetricCard
               title="Orders"
-              backgroundColor="bg-[#F7F9FB]"
+              backgroundColor="bg-[#F7F9FB] dark:bg-[#272727]"
+              titleColor="text-[#1C1C1C] dark:text-white"
+              valueColor="text-[#1C1C1C] dark:text-white"
+              changeColor="text-[#1C1C1C] dark:text-white"
               value="1,219"
               change="-0.03%"
               isPositive={false}
             />
             <MetricCard
               title="Revenue"
-              backgroundColor="bg-[#F7F9FB]"
+              backgroundColor="bg-[#F7F9FB] dark:bg-[#272727]"
+              titleColor="text-[#1C1C1C] dark:text-white"
+              valueColor="text-[#1C1C1C] dark:text-white"
+              changeColor="text-[#1C1C1C] dark:text-white"
               value="$695"
               change="+15.03%"
               isPositive={true}
             />
             <MetricCard
               title="Growth"
-              backgroundColor="bg-[#E5ECF6]"
+              backgroundColor="bg-[#E5ECF6] dark:bg-[#E5ECF6]"
+              titleColor="text-[#1C1C1C] dark:text-[#1C1C1C]"
+              valueColor="text-[#1C1C1C] dark:text-[#1C1C1C]"
+              changeColor="text-[#1C1C1C] dark:text-[#1C1C1C]"
               value="30.1%"
               change="+6.08%"
               isPositive={true}

@@ -74,7 +74,7 @@ const NavSection = ({ title, items }: NavSectionProps) => {
                 className={cn(
                   "w-full flex items-center gap-3 pl-6 pr-3 py-1 text-sm rounded-lg transition-colors relative",
                   isActive(item)
-                    ? "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white font-normal"
+                    ? "bg-gray-200 dark:bg-[#333333] text-gray-900 dark:text-white font-normal"
                     : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-[#494949]"
                 )}
               >
@@ -199,7 +199,7 @@ export const Navigation = ({ isOpen = true, onClose }: NavigationProps) => {
           </div>
           <button
             onClick={onClose}
-            className="lg:hidden p-1.5 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
+            className="lg:hidden p-1.5 hover:bg-gray-100 dark:hover:bg-[#333333] rounded-lg"
           >
             <MdClose className="text-gray-600 dark:text-gray-400 text-lg" />
           </button>

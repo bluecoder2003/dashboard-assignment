@@ -92,12 +92,12 @@ export const OrderList = () => {
   };
 
   return (
-    <div className="p-4 sm:p-6 md:p-8 bg-white dark:bg-gray-900">
+    <div className="p-4 sm:p-6 md:p-8 bg-white dark:bg-[#1C1C1C]">
       <h1 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-4 sm:mb-6">Order List</h1>
 
       {/* Action Bar */}
       <Card className="mb-4 sm:mb-6">
-        <div className="px-2 py-2 bg-[#F7F9FB] dark:bg-gray-800 rounded-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="px-2 py-2 bg-[#F7F9FB] dark:bg-[#272727] rounded-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2 sm:gap-3">
             <Button size="icon" variant="ghost" className="h-10 w-10">
               <PiPlusBold className="w-4 h-4"/>
@@ -109,8 +109,8 @@ export const OrderList = () => {
               <PiArrowsDownUpBold className="w-4 h-4"/>
             </Button>
           </div>
-          <div className="flex items-center gap-2 px-2 py-1 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 w-1/6">
-            <MdSearch className="text-gray-400 dark:text-gray-500 w-6 h-6" />
+          <div className="flex items-center gap-2 px-2 py-1 bg-gray-50 dark:bg-[#232323] rounded-lg border border-gray-200 dark:border-[#393939] w-1/6">
+            <MdSearch className="text-gray-400 dark:text-[#7E7E7E] w-6 h-6" />
             <input
               type="text"
               placeholder="Search"
@@ -119,7 +119,7 @@ export const OrderList = () => {
                 setSearchQuery(e.target.value);
                 setCurrentPage(1);
               }}
-              className="bg-transparent outline-none text-sm flex-1 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500"
+              className="bg-transparent outline-none text-sm flex-1 text-gray-900 dark:text-[#7E7E7E] placeholder:text-gray-400 dark:placeholder:text-[#7E7E7E]"
             />
           </div>
         </div>
@@ -129,9 +129,9 @@ export const OrderList = () => {
       <Card>
         <div className="overflow-x-auto -mx-4 sm:mx-0">
           <div className="inline-block min-w-full align-middle">
-            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+              <table className="min-w-full divide-y divide-gray-200 dark:divide-[#333333]">
               <thead>
-                <tr className="bg-white dark:bg-gray-800">
+                    <tr className="bg-white dark:bg-[#1C1C1C]">
                     <th className="text-left h-12 py-2 px-3 flex items-center justify-start text-[#A4A4A4] dark:text-gray-300">
                       <input
                         type="checkbox"
@@ -140,50 +140,44 @@ export const OrderList = () => {
                           currentOrders.every((order) => selectedOrders.has(order.id))
                         }
                         onChange={(e) => handleSelectAll(e.target.checked)}
-                        className="w-4 h-4 rounded border-gray-300 checked:bg-[#1C1C1C] checked:border-[#1C1C1C] focus:ring-0 focus:ring-offset-0"
-                        style={{
-                          accentColor: '#1C1C1C',
-                        }}
+                        className="w-4 h-4 rounded border border-gray-300 focus:ring-0 focus:ring-offset-0 appearance-none bg-white dark:bg-[#1C1C1C] checked:bg-[#1C1C1C] dark:checked:bg-[#C6C7F8] relative checked:after:content-['✓'] checked:after:absolute checked:after:inset-0 checked:after:flex checked:after:items-center checked:after:justify-center checked:after:text-white checked:after:text-xs dark:checked:after:text-[#1C1C1C]"
                       />
                     </th>
-                  <th className="text-left py-3 px-3 text-xs font-normal text-[#A4A4A4] dark:text-gray-300 whitespace-nowrap">
+                  <th className="text-left py-3 px-3 text-xs font-normal text-[#A4A4A4] dark:text-[#777777] whitespace-nowrap">
                     Order ID
                   </th>
-                  <th className="text-left py-3 px-3 text-xs font-normal text-[#A4A4A4] dark:text-gray-300 whitespace-nowrap">
+                  <th className="text-left py-3 px-3 text-xs font-normal text-[#A4A4A4] dark:text-[#777777] whitespace-nowrap">
                     User
                   </th>
-                  <th className="text-left py-3 px-3 text-xs font-normal text-[#A4A4A4] dark:text-gray-300 whitespace-nowrap hidden md:table-cell">
+                  <th className="text-left py-3 px-3 text-xs font-normal text-[#A4A4A4] dark:text-[#777777] whitespace-nowrap hidden md:table-cell">
                     Project
                   </th>
-                  <th className="text-left py-3 px-3 text-xs font-normal text-[#A4A4A4] dark:text-gray-300 whitespace-nowrap hidden lg:table-cell">
+                  <th className="text-left py-3 px-3 text-xs font-normal text-[#A4A4A4] dark:text-[#777777] whitespace-nowrap hidden lg:table-cell">
                     Address
                   </th>
-                  <th className="text-left py-3 px-3 text-xs font-normal text-[#A4A4A4] dark:text-gray-300 whitespace-nowrap hidden sm:table-cell">
+                  <th className="text-left py-3 px-3 text-xs font-normal text-[#A4A4A4] dark:text-[#777777] whitespace-nowrap hidden sm:table-cell">
                     Date
                   </th>
-                  <th className="text-left py-3 px-3 text-xs font-normal text-[#A4A4A4] dark:text-gray-300 whitespace-nowrap">
+                  <th className="text-left py-3 px-3 text-xs font-normal text-[#A4A4A4] dark:text-[#777777] whitespace-nowrap">
                     Status
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100 dark:divide-gray-700 bg-white dark:bg-gray-800">
+                <tbody className="divide-y divide-gray-100 dark:divide-[#333333] bg-white dark:bg-[#1C1C1C]">
                 {currentOrders.map((order) => (
                   <tr
                     key={order.id}
-                    className={cn(
-                      "group hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors h-12",
-                      selectedOrders.has(order.id) && "bg-blue-50 dark:bg-gray-700"
-                    )}
+                      className={cn(
+                        "group hover:bg-gray-50 dark:hover:bg-[#333333] transition-colors h-12",
+                        selectedOrders.has(order.id) && "bg-blue-50 dark:bg-[#333333]"
+                      )}
                   >
                     <td className="py-2 px-3 flex items-center justify-start h-12">
                       <input
                         type="checkbox"
                         checked={selectedOrders.has(order.id)}
                         onChange={(e) => handleSelectOrder(order.id, e.target.checked)}
-                        className="w-4 h-4 p-2 rounded border-gray-300 checked:bg-[#1C1C1C] checked:border-[#1C1C1C] focus:ring-0 focus:ring-offset-0"
-                        style={{
-                          accentColor: '#1C1C1C',
-                        }}
+                        className="w-4 h-4 rounded border border-gray-300 focus:ring-0 focus:ring-offset-0 appearance-none bg-white dark:bg-[#1C1C1C] checked:bg-[#1C1C1C] dark:checked:bg-[#C6C7F8] relative checked:after:content-['✓'] checked:after:absolute checked:after:inset-0 checked:after:flex checked:after:items-center checked:after:justify-center checked:after:text-white checked:after:text-xs dark:checked:after:text-[#1C1C1C]"
                       />
                     </td>
                     <td className="py-2 px-3">
@@ -191,7 +185,7 @@ export const OrderList = () => {
                     </td>
                     <td className="py-2 px-3">
                       <div className="flex items-center gap-2 sm:gap-3">
-                        <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-700 shrink-0">
+                        <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden bg-gray-100 dark:bg-[#333333] shrink-0">
                           <Image
                             src={order.user.avatar}
                             alt={order.user.name}
@@ -237,7 +231,7 @@ export const OrderList = () => {
         </div>
 
         {/* Pagination */}
-        <div className="flex bg-white dark:bg-gray-800 items-center justify-center sm:justify-end gap-1 sm:gap-2 p-3 sm:p-4 border-t border-gray-200 dark:border-gray-700 flex-wrap">
+          <div className="flex bg-white dark:bg-[#1C1C1C] items-center justify-center sm:justify-end gap-1 sm:gap-2 p-3 sm:p-4 border-t border-gray-200 dark:border-[#333333] flex-wrap">
           <Button
             size="sm"
             variant="ghost"
@@ -254,10 +248,10 @@ export const OrderList = () => {
                   size="sm"
                   variant={currentPage === page ? "default" : "ghost"}
                   onClick={() => goToPage(page)}
-                  className={cn(
-                    "min-w-[32px] h-8 text-xs sm:text-sm",
-                    currentPage === page && "bg-[#F4F4F4] dark:bg-gray-700 text-[#1C1C1C] hover:bg-[#E4E4E4] dark:hover:bg-gray-600"
-                  )}
+                      className={cn(
+                        "min-w-[32px] h-8 text-xs sm:text-sm",
+                        currentPage === page && "bg-[#F4F4F4] dark:bg-[#333333] text-[#1C1C1C] dark:text-white hover:bg-[#E4E4E4] dark:hover:bg-[#494949]"
+                      )}
                 >
                   {page}
                 </Button>

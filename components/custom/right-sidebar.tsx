@@ -49,7 +49,7 @@ export const RightSidebar = ({ isOpen = false, onClose }: RightSidebarProps) => 
       {/* Sidebar */}
       <div 
         className={cn(
-          "fixed xl:static inset-y-0 right-0 z-50 h-screen bg-white dark:bg-gray-800 border-l border-gray-200 dark:border-gray-700 overflow-y-auto shrink-0 transition-all duration-300 ease-in-out",
+          "fixed xl:static inset-y-0 right-0 z-50 h-screen bg-white dark:bg-[#1C1C1C] border-l border-gray-200 dark:border-[#333333] overflow-y-auto shrink-0 transition-all duration-300 ease-in-out",
           isOpen ? "w-72 opacity-100" : "w-0 opacity-0 xl:w-0"
         )}
       >
@@ -59,7 +59,7 @@ export const RightSidebar = ({ isOpen = false, onClose }: RightSidebarProps) => 
             <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Notifications</h2>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+              className="p-2 hover:bg-gray-100 dark:hover:bg-[#333333] rounded-lg"
             >
               <MdClose className="text-gray-600 dark:text-gray-400" />
             </button>
@@ -70,10 +70,10 @@ export const RightSidebar = ({ isOpen = false, onClose }: RightSidebarProps) => 
           <div className="space-y-4">
             {notifications.map((notification, index) => (
               <div key={index} className="flex gap-3">
-                <div className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center mt-1">{notification.icon}</div>
+                <div className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center mt-1 dark:bg-[#E3F5FF]">{notification.icon}</div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm text-gray-900 dark:text-gray-100">{notification.text}</p>
-                  <p className="text-xs text-[#A4A4A4] dark:text-gray-400 mt-1">{notification.time}</p>
+                  <p className="text-xs text-[#A4A4A4] dark:text-[#7E7E7E] mt-1">{notification.time}</p>
                 </div>
               </div>
             ))}
@@ -86,7 +86,7 @@ export const RightSidebar = ({ isOpen = false, onClose }: RightSidebarProps) => 
           <div className="space-y-4">
             {activities.map((activity, index) => (
               <div key={index} className="flex gap-3">
-                <div className="relative shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-700">
+                <div className="relative shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gray-100 dark:bg-[#333333]">
                   <Image
                     src={activity.avatar}
                     alt={activity.text}
@@ -98,7 +98,7 @@ export const RightSidebar = ({ isOpen = false, onClose }: RightSidebarProps) => 
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm text-gray-900 dark:text-gray-100">{activity.text}</p>
-                  <p className="text-xs text-[#A4A4A4] dark:text-gray-400 mt-1">{activity.time}</p>
+                  <p className="text-xs text-[#A4A4A4] dark:text-[#7E7E7E] mt-1">{activity.time}</p>
                 </div>
               </div>
             ))}
@@ -111,7 +111,7 @@ export const RightSidebar = ({ isOpen = false, onClose }: RightSidebarProps) => 
           <div className="space-y-3">
             {contacts.map((contact, index) => (
               <div key={index} className="flex items-center gap-3">
-                <div className="relative w-8 h-8 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-700">
+                <div className="relative w-8 h-8 rounded-full overflow-hidden bg-gray-100 dark:bg-[#333333]">
                   <Image
                     src={contact.avatar}
                     alt={contact.name}
@@ -121,7 +121,7 @@ export const RightSidebar = ({ isOpen = false, onClose }: RightSidebarProps) => 
                     unoptimized
                   />
                 </div>
-                <span className="text-sm text-gray-900 dark:text-gray-100">{contact.name}</span>
+                <span className="text-sm text-gray-900 dark:text-white">{contact.name}</span>
               </div>
             ))}
           </div>
