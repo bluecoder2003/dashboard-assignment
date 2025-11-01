@@ -29,7 +29,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
             onNotificationClick={() => setIsRightSidebarOpen(!isRightSidebarOpen)}
             showRightSidebar={showRightSidebar}
           />
-          <main className="flex-1 overflow-y-auto bg-gray-50 dark:bg-gray-900">
+          <main className="flex-1 overflow-y-auto bg-white dark:bg-gray-900">
             {children}
           </main>
         </div>
