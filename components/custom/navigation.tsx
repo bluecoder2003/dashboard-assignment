@@ -6,19 +6,11 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
-  MdDashboard,
-  MdShoppingCart,
-  MdFolder,
-  MdSchool,
-  MdPerson,
-  MdGroup,
-  MdBusiness,
-  MdArticle,
-  MdChat,
   MdChevronRight,
   MdKeyboardArrowDown,
   MdClose,
 } from "react-icons/md";
+import { PiChartPieSliceDuotone,PiFolderDuotone,PiShoppingBagOpenDuotone,PiBookOpenDuotone,PiIdentificationBadgeDuotone, PiIdentificationCardDuotone, PiUsersThreeDuotone, PiChatsTeardropDuotone, PiNotebookDuotone } from "react-icons/pi";
 
 interface NavItem {
   name: string;
@@ -48,50 +40,60 @@ const NavSection = ({ title, items }: NavSectionProps) => {
   };
 
   return (
-    <div className="mb-6">
+    <div className="mb-4">
       {title && (
-        <h3 className="mb-3 px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+        <h3 className="mb-3 px-1 text-sm font-normal text-[#A4A4A4]">
           {title}
         </h3>
       )}
-      <ul className="space-y-0.5">
+      <ul className="space-y-1">
         {items.map((item) => (
           <li key={item.name}>
             {item.href ? (
               <Link
                 href={item.href}
                 className={cn(
-                  "w-full flex items-center gap-3 px-3 py-2.5 text-sm rounded-lg transition-colors",
+                  "w-full flex items-center gap-2 pl-6 pr-3 py-1 text-sm rounded-lg transition-colors relative",
                   isActive(item)
-                    ? "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white font-normal"
-                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50"
+                    ? "bg-gray-100 dark:bg-[#333333] text-gray-900 dark:text-white font-normal"
+                    : "text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-[#494949]"
                 )}
               >
-                {item.children && (
-                  <MdChevronRight className="text-gray-400 text-base shrink-0" />
+                {isActive(item) && (
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-4 bg-gray-900 dark:bg-[#C6C7F8] rounded-full" />
                 )}
-                {item.icon && <span className="text-base shrink-0">{item.icon}</span>}
+                {!isActive(item) && (
+                  <MdChevronRight className="absolute left-0 text-gray-400 dark:text-[#494949] text-base shrink-0" />
+                )}
+                {item.icon && <span className="text-lg shrink-0">{item.icon}</span>}
                 <span className="flex-1">{item.name}</span>
               </Link>
             ) : (
               <button
                 onClick={() => item.children && toggleExpand(item.name)}
                 className={cn(
-                  "w-full flex items-center gap-3 px-3 py-2.5 text-sm rounded-lg transition-colors",
+                  "w-full flex items-center gap-3 pl-6 pr-3 py-1 text-sm rounded-lg transition-colors relative",
                   isActive(item)
                     ? "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white font-normal"
-                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50"
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-[#494949]"
                 )}
               >
-                {item.children && (
-                  expanded[item.name] ? (
-                    <MdKeyboardArrowDown className="text-gray-400 text-base shrink-0" />
+                {isActive(item) && (
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-4 bg-gray-900 dark:bg-white rounded-full" />
+                )}
+                {!isActive(item) && (
+                  item.children ? (
+                    expanded[item.name] ? (
+                      <MdKeyboardArrowDown className="absolute left-0 text-gray-400 dark:text-[#858585] text-base shrink-0" />
+                    ) : (
+                      <MdChevronRight className="absolute left-0 text-gray-400 dark:text-[#858585] text-base shrink-0" />
+                    )
                   ) : (
-                    <MdChevronRight className="text-gray-400 text-base shrink-0" />
+                    <MdChevronRight className="absolute left-0 text-gray-400 dark:text-[#858585] text-base shrink-0" />
                   )
                 )}
                 {item.icon && <span className="text-base shrink-0">{item.icon}</span>}
-                <span className="flex-1">{item.name}</span>
+                <span className="text-gray-600 dark:text-white">{item.name}</span>
               </button>
             )}
             {item.children && expanded[item.name] && (
@@ -102,16 +104,16 @@ const NavSection = ({ title, items }: NavSectionProps) => {
                       <Link
                         href={child.href}
                         className={cn(
-                          "block w-full text-left px-3 py-2 text-sm rounded-lg transition-colors",
+                          "block w-full text-left px-3 py-1 text-sm rounded-lg transition-colors",
                           isActive(child)
-                            ? "text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700 font-normal"
-                            : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50"
+                            ? "text-gray-900 dark:text-white bg-gray-100 dark:bg-[#333333] font-normal"
+                            : "text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-[#494949]"
                         )}
                       >
                         {child.name}
                       </Link>
                     ) : (
-                      <button className="w-full text-left px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                      <button className="w-full text-left px-3 py-1 text-sm text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-[#494949] transition-colors">
                         {child.name}
                       </button>
                     )}
@@ -140,16 +142,16 @@ export const Navigation = ({ isOpen = true, onClose }: NavigationProps) => {
   ];
 
   const dashboardItems: NavItem[] = [
-    { name: "Default", icon: <MdDashboard />, href: "/" },
-    { name: "eCommerce", icon: <MdShoppingCart />, href: "/ecommerce" },
-    { name: "Projects", icon: <MdFolder />, href: "#" },
-    { name: "Online Courses", icon: <MdSchool />, href: "#" },
+    { name: "Default", icon: <PiChartPieSliceDuotone />, href: "/" },
+    { name: "eCommerce", icon: <PiShoppingBagOpenDuotone />, href: "/ecommerce" },
+    { name: "Projects", icon: <PiFolderDuotone />, href: "#" },
+    { name: "Online Courses", icon: <PiBookOpenDuotone />, href: "#" },
   ];
 
   const pagesItems: NavItem[] = [
     {
       name: "User Profile",
-      icon: <MdPerson />,
+      icon: <PiIdentificationBadgeDuotone />,
       children: [
         { name: "Overview" },
         { name: "Projects" },
@@ -158,22 +160,10 @@ export const Navigation = ({ isOpen = true, onClose }: NavigationProps) => {
         { name: "Followers" },
       ],
     },
-  ];
-
-  const accountItems: NavItem[] = [
-    { name: "Account", icon: <MdGroup /> },
-  ];
-
-  const corporateItems: NavItem[] = [
-    { name: "Corporate", icon: <MdBusiness /> },
-  ];
-
-  const blogItems: NavItem[] = [
-    { name: "Blog", icon: <MdArticle /> },
-  ];
-
-  const socialItems: NavItem[] = [
-    { name: "Social", icon: <MdChat /> },
+    { name: "Account", icon: <PiIdentificationCardDuotone />, href: "#" },
+    { name: "Corporate", icon: <PiUsersThreeDuotone />, href: "#" },
+    { name: "Blog", icon: <PiNotebookDuotone />, href: "#" },
+    { name: "Social", icon: <PiChatsTeardropDuotone />, href: "#" },
   ];
 
   return (
@@ -189,12 +179,12 @@ export const Navigation = ({ isOpen = true, onClose }: NavigationProps) => {
       {/* Sidebar */}
       <div
         className={cn(
-          "fixed lg:static inset-y-0 left-0 z-50 w-[212px] h-screen bg-white dark:bg-[#1a1d1f] border-r border-gray-200 dark:border-gray-800 overflow-y-auto shrink-0 transition-transform duration-300 p-2",
+          "fixed lg:static inset-y-0 left-0 z-50 w-[212px] h-screen bg-white dark:bg-[#1C1C1C] border-r border-gray-200 dark:border-[#333333] overflow-y-auto shrink-0 transition-transform duration-300 p-2",
           !isOpen && "-translate-x-full lg:translate-x-0"
         )}
       >
         {/* Header with Logo */}
-        <div className="p-5 flex items-center justify-between ">
+        <div className="px-2 py-3 flex items-center justify-between ">
           <div className="flex items-center gap-2.5">
             <div className="relative w-6 h-6 shrink-0">
               <Image
@@ -217,30 +207,30 @@ export const Navigation = ({ isOpen = true, onClose }: NavigationProps) => {
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-1 px-2 pt-2 pb-2">
+        <div className="flex gap-1 px-2 py-2">
           <button
             onClick={() => setActiveTab("favorites")}
-            className="text-sm font-normal py-1 px-2 rounded-lg transition-colors text-center text-[#A4A4A4] hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-700/50 dark:text-gray-400"
+            className="text-sm font-normal py-1 px-2 rounded-lg transition-colors text-center text-[#A4A4A4] hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-[#494949] dark:hover:text-[#D2D2D2]"
           >
             Favorites
           </button>
           <button
             onClick={() => setActiveTab("recently")}
-            className="text-sm font-normal py-1 px-2 rounded-lg transition-colors text-center text-[#A4A4A4] hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-700/50 dark:text-gray-400"
+            className="text-sm font-normal py-1 px-2 rounded-lg transition-colors text-center text-[#A4A4A4] hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-[#494949] dark:hover:text-[#D2D2D2]"
           >
             Recently
           </button>
         </div>
 
-        <nav className="px-3 pt-2 pb-4">
+        <nav className="px-3 pb-4">
           {/* Favorites/Recently Items - Always visible */}
           <div className="mb-6">
-            <ul className="space-y-1">
+            <ul>
               {favoritesItems.map((item) => (
                 <li key={item.name}>
-                  <div className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-400">
-                    <span className="text-xs">•</span>
-                    <span>{item.name}</span>
+                  <div className="flex items-center gap-2 py-0.5 px-1 text-sm text-gray-600 dark:text-gray-400">
+                    <span className="text-xl text-[#D2D2D2] dark:text-[#858585]">•</span>
+                    <span className="text-sm text-[#1C1C1C] dark:text-white">{item.name}</span>
                   </div>
                 </li>
               ))}
@@ -249,7 +239,6 @@ export const Navigation = ({ isOpen = true, onClose }: NavigationProps) => {
 
           <NavSection title="Dashboards" items={dashboardItems} />
           <NavSection title="Pages" items={pagesItems} />
-          <NavSection title="" items={[...accountItems, ...corporateItems, ...blogItems, ...socialItems]} />
         </nav>
       </div>
     </>
