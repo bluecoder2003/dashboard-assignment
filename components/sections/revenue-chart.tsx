@@ -25,14 +25,15 @@ export const RevenueChart = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-lg font-semibold">Revenue</CardTitle>
-        <CardDescription>
-          <span className="text-gray-900 font-medium">Current Week $58,211</span>
-          <span className="text-gray-500"> • Previous Week $68,768</span>
+        <CardTitle className="text-sm font-semibold">Revenue</CardTitle>
+        <CardDescription className="flex flex-row items-center justify-start gap-4">
+        <span className="text-gray-500 text-xs">|</span>
+          <span className="text-gray-900 text-xs font-medium"> • Current Week $58,211</span>
+          <span className="text-gray-500 text-xs"> • Previous Week $68,768</span>
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <ResponsiveContainer width="100%" height={300}>
+      <CardContent className="h-fit w-full pt-5 pr-8">
+        <ResponsiveContainer width="100%" height={250}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
             <XAxis dataKey="month" stroke="#9ca3af" fontSize={12} />
@@ -49,14 +50,15 @@ export const RevenueChart = () => {
               dataKey="current"
               stroke="#000000"
               strokeWidth={2}
+              strokeDasharray="5 5"
               dot={false}
             />
             <Line
               type="monotone"
               dataKey="previous"
-              stroke="#93c5fd"
+              stroke="#A8C5DA"
               strokeWidth={2}
-              strokeDasharray="5 5"
+              // strokeDasharray="5 5"
               dot={false}
             />
           </LineChart>

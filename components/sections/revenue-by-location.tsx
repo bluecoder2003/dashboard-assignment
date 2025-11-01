@@ -2,36 +2,41 @@
 
 import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import Image from "next/image";
+import worldMap from "@/public/WorldMap.png";
 
 const locations = [
-  { name: "New York", revenue: "72K" },
-  { name: "San Francisco", revenue: "39K" },
-  { name: "Sydney", revenue: "25K" },
-  { name: "Singapore", revenue: "61K" },
+  { name: "New York", revenue: "72K", percentage: 72 },
+  { name: "San Francisco", revenue: "39K", percentage: 39 },
+  { name: "Sydney", revenue: "25K", percentage: 25 },
+  { name: "Singapore", revenue: "61K", percentage: 61 },
 ];
 
 export const RevenueByLocation = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-lg font-semibold">Revenue by Location</CardTitle>
+        <CardTitle className="text-sm font-semibold">Revenue by Location</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          <div className="w-full h-48 bg-gray-100 rounded-lg flex items-center justify-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-linear-to-br from-blue-50 to-gray-100">
-              {/* Simplified world map representation */}
-              <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-gray-900 rounded-full"></div>
-              <div className="absolute top-1/3 left-1/6 w-3 h-3 bg-gray-900 rounded-full"></div>
-              <div className="absolute bottom-1/3 right-1/4 w-3 h-3 bg-gray-900 rounded-full"></div>
-              <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-gray-900 rounded-full"></div>
-            </div>
+          <div className="w-full rounded-lg flex items-center justify-center relative overflow-hidden px-4">
+            <Image src={worldMap} alt="World Map" width={1000} height={1000} className="object-cover w-full h-full" />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-3 p-5">
             {locations.map((location) => (
-              <div key={location.name} className="flex justify-between items-center">
-                <span className="text-sm text-gray-600 dark:text-gray-400">{location.name}</span>
-                <span className="text-sm font-semibold text-gray-900 dark:text-gray-100">{location.revenue}</span>
+              <div key={location.name} className="space-y-1.5">
+                <div className="flex justify-between items-center">
+                  <span className="text-xs font-medium text-[#1C1C1C] dark:text-gray-400">{location.name}</span>
+                  <span className="text-xs font-semibold text-[#1C1C1C] dark:text-gray-100">{location.revenue}</span>
+                </div>
+                {/* Progress bar */}
+                <div className="w-full h-0.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-[#A8C5DA] dark:bg-[#60a5fa] rounded-full transition-all duration-300"
+                    style={{ width: `${location.percentage}%` }}
+                  />
+                </div>
               </div>
             ))}
           </div>

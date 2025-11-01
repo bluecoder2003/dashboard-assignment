@@ -41,7 +41,7 @@ export const ProjectionsChart = () => {
         <CardTitle className="text-sm font-semibold">Projections vs Actuals</CardTitle>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[200px] w-full pr-8">
+        <ChartContainer config={chartConfig} className="h-[200px] w-full pb-6 pr-8">
           <BarChart accessibilityLayer data={chartData} barSize={24}>
             <CartesianGrid vertical={false} />
             <XAxis

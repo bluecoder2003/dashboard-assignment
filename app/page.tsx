@@ -52,8 +52,8 @@ export default function Home() {
         </div>
 
         {/* Charts Row */}
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6 mb-4 sm:mb-6">
-          <div className="xl:col-span-2">
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 sm:gap-6 mb-4 sm:mb-6">
+          <div className="xl:col-span-3">
             <RevenueChart />
           </div>
           <div>
@@ -62,8 +62,8 @@ export default function Home() {
         </div>
 
         {/* Bottom Row */}
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6">
-          <div className="xl:col-span-2">
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 sm:gap-6">
+          <div className="xl:col-span-3">
             <TopSellingProducts />
           </div>
           <div>

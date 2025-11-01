@@ -18,22 +18,23 @@ export const TotalSales = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-lg font-semibold">Total Sales</CardTitle>
+        <CardTitle className="text-sm font-semibold">Total Sales</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-6">
+        <div className="space-y-6 px-5">
           <div className="flex justify-center">
-            <div className="relative w-48 h-48">
+            <div className="relative w-32 h-32">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
                     data={data}
                     cx="50%"
                     cy="50%"
-                    innerRadius={60}
-                    outerRadius={80}
-                    paddingAngle={2}
+                    innerRadius={42}
+                    outerRadius={60}
+                    paddingAngle={1}
                     dataKey="value"
+                    cornerRadius={8}
                   >
                     {data.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.color} />
@@ -46,7 +47,7 @@ export const TotalSales = () => {
               </div>
             </div>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-3 pb-6">
             {data.map((item) => (
               <div key={item.name} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -54,9 +55,9 @@ export const TotalSales = () => {
                     className="w-3 h-3 rounded-full"
                     style={{ backgroundColor: item.color }}
                   ></div>
-                  <span className="text-sm text-gray-600 dark:text-gray-400">{item.name}</span>
+                  <span className="text-xs text-gray-600 dark:text-gray-400">{item.name}</span>
                 </div>
-                <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                <span className="text-xs font-medium text-gray-900 dark:text-gray-100">
                   ${item.value.toFixed(2)}
                 </span>
               </div>
