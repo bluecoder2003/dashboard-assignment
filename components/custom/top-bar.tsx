@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { MdSearch, MdMenu } from "react-icons/md";
 import { useTheme } from "./theme-provider";
 import { PiMoonDuotone, PiSidebarDuotone, PiStarDuotone, PiSunDimDuotone, PiBellDuotone, PiClockCounterClockwiseDuotone } from "react-icons/pi";
+import { IconButton, Breadcrumb } from "@/components/shared";
 
 interface TopBarProps {
   onMenuClick?: () => void;
@@ -35,23 +36,22 @@ export const TopBar = ({ onMenuClick, onNotificationClick }: TopBarProps) => {
         
         {/* Left icons */}
         <div className="hidden lg:flex items-center gap-2">
-          <button 
+          <IconButton
             onClick={onMenuClick}
-            className="p-1.5 hover:bg-gray-100 dark:hover:bg-[#333333] rounded transition-colors"
-          >
-            <PiSidebarDuotone className="text-gray-600 dark:text-white text-lg" />
-          </button>
-          <button className="p-1.5 hover:bg-gray-100 dark:hover:bg-[#333333] rounded transition-colors">
-            <PiStarDuotone className="text-gray-600 dark:text-white text-lg" />
-          </button>
+            icon={<PiSidebarDuotone className="text-gray-600 dark:text-white text-lg" />}
+          />
+          <IconButton
+            icon={<PiStarDuotone className="text-gray-600 dark:text-white text-lg" />}
+          />
         </div>
         
         {/* Breadcrumbs */}
-        <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-          <span className="text-[#A4A4A4] dark:text-[#7E7E7E] font-normal">Dashboards</span>
-          <span className="text-[#A4A4A4] dark:text-[#7E7E7E] font-normal">/</span>
-          <span className="text-gray-900 dark:text-white font-normal">{getPageTitle()}</span>
-        </div>
+        <Breadcrumb
+          items={[
+            { label: "Dashboards", isActive: false },
+            { label: getPageTitle(), isActive: true },
+          ]}
+        />
       </div>
       
       <div className="flex items-center gap-3">
@@ -69,40 +69,36 @@ export const TopBar = ({ onMenuClick, onNotificationClick }: TopBarProps) => {
         {/* Right icons */}
         <div className="flex items-center gap-2">
           {/* Mobile search button */}
-          <button className="md:hidden p-2 hover:bg-gray-100 dark:hover:bg-[#333333] rounded-lg transition-colors">
-            <MdSearch className="text-gray-600 dark:text-[#7E7E7E]" />
-          </button>
+          <IconButton
+            className="md:hidden"
+            size="lg"
+            icon={<MdSearch className="text-gray-600 dark:text-[#7E7E7E]" />}
+          />
           
-          <button 
+          <IconButton
             onClick={toggleTheme}
-            className="p-1.5 hover:bg-gray-100 dark:hover:bg-[#333333] rounded transition-colors"
             aria-label="Toggle theme"
-          >
-            {theme === "light" ? (
-              <PiSunDimDuotone className="text-gray-600 text-lg dark:text-[#7E7E7E]" />
-            ) : (
-              <PiMoonDuotone className="text-gray-600 text-lg dark:text-white" />
-            )}
-          </button>
+            icon={
+              theme === "light" ? (
+                <PiSunDimDuotone className="text-gray-600 text-lg dark:text-[#7E7E7E]" />
+              ) : (
+                <PiMoonDuotone className="text-gray-600 text-lg dark:text-white" />
+              )
+            }
+          />
           
-          <button 
-            className="p-1.5 hover:bg-gray-100 dark:hover:bg-[#333333] rounded transition-colors"
-          >
-            <PiBellDuotone className="text-gray-600 text-lg dark:text-white" />
-          </button>
+          <IconButton
+            icon={<PiBellDuotone className="text-gray-600 text-lg dark:text-white" />}
+          />
           
-          <button 
-            className="p-1.5 hover:bg-gray-100 dark:hover:bg-[#333333] rounded transition-colors"
-          >
-            <PiClockCounterClockwiseDuotone className="text-gray-600 text-lg dark:text-white" />
-          </button>
+          <IconButton
+            icon={<PiClockCounterClockwiseDuotone className="text-gray-600 text-lg dark:text-white" />}
+          />
           
-          <button 
+          <IconButton
             onClick={onNotificationClick}
-            className="p-1.5 hover:bg-gray-100 dark:hover:bg-[#333333] rounded transition-colors"
-          >
-            <PiSidebarDuotone className="text-gray-600 dark:text-white text-lg" />
-          </button>
+            icon={<PiSidebarDuotone className="text-gray-600 dark:text-white text-lg" />}
+          />
         </div>
       </div>
     </div>
