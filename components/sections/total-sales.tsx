@@ -1,19 +1,47 @@
 "use client";
 
 import React from "react";
+import { Pie, PieChart } from "recharts";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 
-const data = [
-  { name: "Direct", value: 300.56, color: "#93c5fd" },
-  { name: "Affiliate", value: 135.18, color: "#86efac" },
-  { name: "Sponsored", value: 154.02, color: "#c4b5fd" },
-  { name: "E-mail", value: 48.96, color: "#1f2937" },
+const chartData = [
+  { name: "Direct", value: 300.56, fill: "#1f2937" },
+  { name: "Affiliate", value: 135.18, fill: "#86efac" },
+  { name: "Sponsored", value: 154.02, fill: "#c4b5fd" },
+  { name: "E-mail", value: 48.96, fill: "#93c5fd" },
 ];
 
+const chartConfig = {
+  value: {
+    label: "Sales",
+  },
+  Direct: {
+    label: "Direct",
+    color: "#1f2937",
+  },
+  Affiliate: {
+    label: "Affiliate",
+    color: "#86efac",
+  },
+  Sponsored: {
+    label: "Sponsored",
+    color: "#c4b5fd",
+  },
+  "E-mail": {
+    label: "E-mail",
+    color: "#93c5fd",
+  },
+} satisfies ChartConfig;
+
 export const TotalSales = () => {
-  const total = data.reduce((sum, item) => sum + item.value, 0);
-  const directPercentage = ((data[0].value / total) * 100).toFixed(1);
+  const total = chartData.reduce((sum, item) => sum + item.value, 0);
+  const directPercentage = ((chartData[0].value / total) * 100).toFixed(1);
 
   return (
     <Card>
@@ -23,37 +51,39 @@ export const TotalSales = () => {
       <CardContent>
         <div className="space-y-6 px-5">
           <div className="flex justify-center">
-            <div className="relative w-32 h-32">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
+            <div className="relative w-[150px] h-[150px]">
+              <ChartContainer
+                config={chartConfig}
+                className="w-full h-full"
+              >
+                <PieChart width={150} height={150}>
+                  <ChartTooltip
+                    cursor={false}
+                    content={<ChartTooltipContent hideLabel />}
+                  />
                   <Pie
-                    data={data}
+                    data={chartData}
+                    dataKey="value"
+                    nameKey="name"
                     cx="50%"
                     cy="50%"
                     innerRadius={42}
                     outerRadius={60}
-                    paddingAngle={1}
-                    dataKey="value"
+                    paddingAngle={2}
                     cornerRadius={8}
-                  >
-                    {data.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
+                  />
                 </PieChart>
-              </ResponsiveContainer>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-2xl font-bold text-gray-900 dark:text-gray-100">{directPercentage}%</span>
-              </div>
+              </ChartContainer>
+             
             </div>
           </div>
           <div className="space-y-3 pb-6">
-            {data.map((item) => (
+            {chartData.map((item) => (
               <div key={item.name} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div
                     className="w-3 h-3 rounded-full"
-                    style={{ backgroundColor: item.color }}
+                    style={{ backgroundColor: item.fill }}
                   ></div>
                   <span className="text-xs text-gray-600 dark:text-gray-400">{item.name}</span>
                 </div>
@@ -68,4 +98,3 @@ export const TotalSales = () => {
     </Card>
   );
 };
-

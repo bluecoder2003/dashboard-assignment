@@ -12,33 +12,33 @@ interface DashboardLayoutProps {
 
 export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const pathname = usePathname();
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
-  const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(true);
+  const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(true);
   const showRightSidebar = pathname === "/";
 
   return (
     <div className="flex h-screen overflow-hidden">
       <Navigation 
-        isOpen={isMobileNavOpen} 
-        onClose={() => setIsMobileNavOpen(false)} 
+        isOpen={isNavOpen} 
+        onClose={() => setIsNavOpen(false)} 
       />
-      <div className="flex flex-col flex-1 overflow-hidden">
-        <TopBar 
-          onMenuClick={() => setIsMobileNavOpen(true)}
-          onNotificationClick={() => setIsRightSidebarOpen(!isRightSidebarOpen)}
-          showRightSidebar={showRightSidebar}
-        />
-        <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden">
+        <div className="flex flex-col flex-1 overflow-hidden">
+          <TopBar 
+            onMenuClick={() => setIsNavOpen(!isNavOpen)}
+            onNotificationClick={() => setIsRightSidebarOpen(!isRightSidebarOpen)}
+            showRightSidebar={showRightSidebar}
+          />
           <main className="flex-1 overflow-y-auto bg-gray-50 dark:bg-gray-900">
             {children}
           </main>
-          {showRightSidebar && (
-            <RightSidebar 
-              isOpen={isRightSidebarOpen}
-              onClose={() => setIsRightSidebarOpen(false)}
-            />
-          )}
         </div>
+        {showRightSidebar && (
+          <RightSidebar 
+            isOpen={isRightSidebarOpen}
+            onClose={() => setIsRightSidebarOpen(false)}
+          />
+        )}
       </div>
     </div>
   );

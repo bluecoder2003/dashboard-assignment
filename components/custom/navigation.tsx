@@ -134,7 +134,6 @@ interface NavigationProps {
 }
 
 export const Navigation = ({ isOpen = true, onClose }: NavigationProps) => {
-  const [activeTab, setActiveTab] = useState<"favorites" | "recently">("favorites");
   
   const favoritesItems: NavItem[] = [
     { name: "Overview" },
@@ -179,8 +178,8 @@ export const Navigation = ({ isOpen = true, onClose }: NavigationProps) => {
       {/* Sidebar */}
       <div
         className={cn(
-          "fixed lg:static inset-y-0 left-0 z-50 w-[212px] h-screen bg-white dark:bg-[#1C1C1C] border-r border-gray-200 dark:border-[#333333] overflow-y-auto shrink-0 transition-transform duration-300 p-2",
-          !isOpen && "-translate-x-full lg:translate-x-0"
+          "fixed lg:static inset-y-0 left-0 z-50 h-screen bg-white dark:bg-[#1C1C1C] border-r border-gray-200 dark:border-[#333333] overflow-y-auto shrink-0 transition-all duration-300 ease-in-out p-2",
+          isOpen ? "w-[212px] opacity-100" : "w-0 opacity-0 lg:w-0"
         )}
       >
         {/* Header with Logo */}
@@ -209,13 +208,11 @@ export const Navigation = ({ isOpen = true, onClose }: NavigationProps) => {
         {/* Tabs */}
         <div className="flex gap-1 px-2 py-2">
           <button
-            onClick={() => setActiveTab("favorites")}
             className="text-sm font-normal py-1 px-2 rounded-lg transition-colors text-center text-[#A4A4A4] hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-[#494949] dark:hover:text-[#D2D2D2]"
           >
             Favorites
           </button>
           <button
-            onClick={() => setActiveTab("recently")}
             className="text-sm font-normal py-1 px-2 rounded-lg transition-colors text-center text-[#A4A4A4] hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-[#494949] dark:hover:text-[#D2D2D2]"
           >
             Recently
