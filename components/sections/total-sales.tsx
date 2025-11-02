@@ -10,6 +10,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { useTheme } from "@/components/custom/theme-provider";
+import { totalSalesData } from "@/config/charts-data";
 
 const chartConfig = {
   value: {
@@ -38,15 +39,13 @@ export const TotalSales = () => {
   const isDark = theme === "dark";
 
   // Dynamic chart data with theme-aware colors
-  const chartData = [
-    { name: "Direct", value: 300.56, fill: isDark ? "#C6C7F8" : "#1f2937" },
-    { name: "Affiliate", value: 135.18, fill: isDark ? "#B8F9D2" : "#86efac" },
-    { name: "Sponsored", value: 154.02, fill: isDark ? "#95A4FC" : "#c4b5fd" },
-    { name: "E-mail", value: 48.96, fill: isDark ? "#B1E3FF" : "#93c5fd" },
-  ];
-
-  const total = chartData.reduce((sum, item) => sum + item.value, 0);
-  const directPercentage = ((chartData[0].value / total) * 100).toFixed(1);
+  const chartData = totalSalesData.map(item => ({
+    ...item,
+    fill: item.name === "Direct" ? (isDark ? "#C6C7F8" : "#1f2937") :
+          item.name === "Affiliate" ? (isDark ? "#B8F9D2" : "#86efac") :
+          item.name === "Sponsored" ? (isDark ? "#95A4FC" : "#c4b5fd") :
+          (isDark ? "#B1E3FF" : "#93c5fd")
+  }));
 
   return (
     <Card>
@@ -54,9 +53,9 @@ export const TotalSales = () => {
         <CardTitle className="text-sm font-semibold">Total Sales</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-6 px-5">
+        <div className="space-y-4 sm:space-y-6 px-3 sm:px-5">
           <div className="flex justify-center">
-            <div className="relative w-[150px] h-[150px]">
+            <div className="relative w-[130px] h-[130px] sm:w-[150px] sm:h-[150px]">
               <ChartContainer
                 config={chartConfig}
                 className="w-full h-full"
@@ -72,22 +71,22 @@ export const TotalSales = () => {
                     nameKey="name"
                     cx="50%"
                     cy="50%"
-                    innerRadius={42}
-                    outerRadius={60}
+                    innerRadius={38}
+                    outerRadius={55}
                     paddingAngle={2}
-                    cornerRadius={8}
+                    cornerRadius={6}
                   />
                 </PieChart>
               </ChartContainer>
              
             </div>
           </div>
-          <div className="space-y-3 pb-6">
+          <div className="space-y-2 sm:space-y-3 pb-4 sm:pb-6">
             {chartData.map((item) => (
               <div key={item.name} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div
-                    className="w-3 h-3 rounded-full"
+                    className="w-3 h-3 rounded-full shrink-0"
                     style={{ backgroundColor: item.fill }}
                   ></div>
                   <span className="text-xs text-gray-600 dark:text-white">{item.name}</span>

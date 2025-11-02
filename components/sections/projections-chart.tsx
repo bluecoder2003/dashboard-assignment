@@ -14,15 +14,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { useTheme } from "@/components/custom/theme-provider";
-
-const chartData = [
-  { month: "January", projections: 18000000, actuals: 16000000 },
-  { month: "February", projections: 20000000, actuals: 19000000 },
-  { month: "March", projections: 17000000, actuals: 18000000 },
-  { month: "April", projections: 22000000, actuals: 21000000 },
-  { month: "May", projections: 24000000, actuals: 23000000 },
-  { month: "June", projections: 26000000, actuals: 25000000 },
-];
+import { projectionsChartData } from "@/config/charts-data";
 
 const chartConfig = {
   projections: {
@@ -49,16 +41,16 @@ export const ProjectionsChart = () => {
         <CardTitle className="text-sm font-semibold text-[#1C1C1C] dark:text-white">Projections vs Actuals</CardTitle>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-[200px] w-full pb-6 pr-8">
-          <BarChart accessibilityLayer data={chartData} barSize={24}>
+        <ChartContainer config={chartConfig} className="h-[180px] sm:h-[200px] w-full pb-4 sm:pb-6 pr-2 sm:pr-4 md:pr-8">
+          <BarChart accessibilityLayer data={projectionsChartData} barSize={20}>
             <CartesianGrid vertical={false} stroke={isDark ? "#7E7E7E" : "#e5e7eb"} />
             <XAxis
               dataKey="month"
               tickLine={false}
-              tickMargin={10}
+              tickMargin={8}
               axisLine={false}
               tickFormatter={(value) => value.slice(0, 3)}
-              tick={{ fill: isDark ? "#7E7E7E" : "#6b7280" }}
+              tick={{ fill: isDark ? "#7E7E7E" : "#6b7280", fontSize: 10 }}
             />
             <YAxis
               tickLine={false}
@@ -66,7 +58,8 @@ export const ProjectionsChart = () => {
               tickFormatter={(value) => `${value / 1000000}M`}
               ticks={[0, 10000000, 20000000, 30000000]}
               domain={[0, 30000000]}
-              tick={{ fill: isDark ? "#7E7E7E" : "#6b7280" }}
+              tick={{ fill: isDark ? "#7E7E7E" : "#6b7280", fontSize: 10 }}
+              width={35}
             />
             <ChartTooltip content={<ChartTooltipContent hideLabel />} />
             <Bar
