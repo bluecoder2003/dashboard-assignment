@@ -210,7 +210,7 @@ export const OrderList = () => {
             <Button 
               size="icon" 
               variant="ghost" 
-              className="h-10 w-10"
+              className="h-8 w-8"
               onClick={() => setShowAddModal(true)}
               title="Add new order"
             >
