@@ -28,23 +28,23 @@ export const MetricCard = ({
   return (
     <Card
       className={cn(
-        "p-6 border-0",
+        "p-4 sm:p-5 md:p-6 border-0",
         backgroundColor ? backgroundColor : (isHighlighted ? "bg-[#E3F5FF] dark:bg-blue-950 border-blue-100 dark:border-blue-900" : "")
       )}
     >
-      <div className="flex flex-col justify-between h-full">
-        <p className={cn("text-sm font-semibold", titleColor)}>
+      <div className="flex flex-col justify-between h-full gap-2 sm:gap-3">
+        <p className={cn("text-xs sm:text-sm font-semibold", titleColor)}>
           {title}
         </p>
         <div className="flex items-center justify-between">
-          <p className={cn("text-2xl font-semibold", valueColor)}>
+          <p className={cn("text-xl sm:text-2xl font-semibold", valueColor)}>
             {value}
           </p>
-          <div className="flex items-center">
+          <div className="flex items-center gap-0.5">
             <span className={cn("text-xs font-medium", changeColor)}>
               {change}
             </span>
-            <MdTrendingUp className={changeColor} />
+            <MdTrendingUp className={cn("text-sm sm:text-base", changeColor)} />
           </div>
         </div>
       </div>

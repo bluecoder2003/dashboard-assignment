@@ -12,15 +12,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useTheme } from "@/components/custom/theme-provider";
-
-const data = [
-  { month: "Jan", current: 10000000, previous: 8000000 },
-  { month: "Feb", current: 15000000, previous: 12000000 },
-  { month: "Mar", current: 12000000, previous: 14000000 },
-  { month: "Apr", current: 18000000, previous: 16000000 },
-  { month: "May", current: 22000000, previous: 20000000 },
-  { month: "Jun", current: 25000000, previous: 23000000 },
-];
+import { revenueChartData } from "@/config/charts-data";
 
 export const RevenueChart = () => {
   const { theme } = useTheme();
@@ -44,9 +36,9 @@ export const RevenueChart = () => {
           <span className="text-gray-500 dark:text-white text-xs"> <span className="text-[#A8C5DA] dark:text-[#A8C5DA] text-lg">•</span> Previous Week $68,768</span>
         </CardDescription>
       </CardHeader>
-      <CardContent className="h-fit w-full pt-5 pr-8">
-        <ResponsiveContainer width="100%" height={250}>
-          <LineChart data={data}>
+       <CardContent className="h-fit w-full pt-5 pr-8">
+         <ResponsiveContainer width="100%" height={250}>
+           <LineChart data={revenueChartData}>
             <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
             <XAxis dataKey="month" stroke={axisColor} fontSize={12} tick={{ fill: axisColor }} />
             <YAxis
