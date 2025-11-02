@@ -2,7 +2,8 @@
 
 A modern, feature-rich dashboard application built with Next.js 16, React 19, TypeScript, and Tailwind CSS. This application provides comprehensive analytics, order management, and data visualization capabilities with a beautiful, responsive UI.
 
-https://drive.google.com/file/d/1CaDXhQJbRxlgEobchcW31tRgNvw4LeCv/view?usp=drive_link
+Video URL - https://drive.google.com/file/d/1CaDXhQJbRxlgEobchcW31tRgNvw4LeCv/view?usp=drive_link
+Deployed Link - https://dashboard-assignment-orpin.vercel.app
 
 ## 🚀 Key Functionalities
 
